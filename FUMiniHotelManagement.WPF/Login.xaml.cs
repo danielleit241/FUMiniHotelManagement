@@ -55,6 +55,7 @@ namespace FUMiniHotelManagement.WPF
             if (customer != null)
             {
                 UserWindow user = new();
+                user.UserLogin = customer;
                 user.Show();
                 this.Hide();
             }

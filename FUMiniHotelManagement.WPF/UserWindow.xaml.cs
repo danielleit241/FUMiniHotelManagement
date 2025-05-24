@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FUMiniHotelManagement.DAL.Entities;
 
 namespace FUMiniHotelManagement.WPF
 {
@@ -19,9 +20,19 @@ namespace FUMiniHotelManagement.WPF
     /// </summary>
     public partial class UserWindow : Window
     {
+        public Customer UserLogin { get; set; }
+
         public UserWindow()
         {
             InitializeComponent();
         }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            //in show ra thong tin cua user dang dang nhap
+        }
+
+        //2 method, 1 la render -> thang profile
+        //          2 la render -> thang booking history
     }
 }
