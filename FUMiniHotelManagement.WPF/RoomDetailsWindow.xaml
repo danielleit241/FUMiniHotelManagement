@@ -63,7 +63,7 @@
 
         <!-- Buttons -->
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,70,30,0" VerticalAlignment="Top">
-            <Button Content="Save Cus" Width="120" Height="40" Background="Yellow" Click="Save_Click" Margin="0,0,0,10"/>
+            <Button Content="Save Room " Width="120" Height="40" Background="Yellow" Click="Save_Click" Margin="0,0,0,10"/>
             <Button Content="Close" Width="120" Height="40" Background="Yellow" Click="Close_Click"/>
         </StackPanel>
     </Grid>
