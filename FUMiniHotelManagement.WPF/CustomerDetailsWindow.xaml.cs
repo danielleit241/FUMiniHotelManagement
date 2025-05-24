@@ -23,5 +23,11 @@ namespace FUMiniHotelManagement.WPF
         {
             InitializeComponent();
         }
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            // Logic to save customer details
+            MessageBox.Show("Airco details saved successfully!");
+            this.Close();
+        }
     }
 }
