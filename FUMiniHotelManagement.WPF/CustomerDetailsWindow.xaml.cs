@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace FUMiniHotelManagement.WPF
 {
     /// <summary>
-    /// Interaction logic for BookingReservationWindow.xaml
+    /// Interaction logic for CustomerDetailsWindow.xaml
     /// </summary>
-    public partial class BookingReservationWindow : Window
+    public partial class CustomerDetailsWindow : Window
     {
-        public BookingReservationWindow()
+        public CustomerDetailsWindow()
         {
             InitializeComponent();
         }
