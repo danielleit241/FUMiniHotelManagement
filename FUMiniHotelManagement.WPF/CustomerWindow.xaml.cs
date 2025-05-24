@@ -24,7 +24,9 @@ namespace FUMiniHotelManagement.WPF
         private UserService _service = new();
         public CustomerWindow()
         {
+            
             InitializeComponent();
+          
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
