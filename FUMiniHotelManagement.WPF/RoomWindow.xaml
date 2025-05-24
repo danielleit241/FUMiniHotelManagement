@@ -12,7 +12,7 @@
         <Label x:Name="HelloMsgLabel" Content="Hello, Administrator" HorizontalAlignment="Left" Height="50" Margin="929,6,0,0" VerticalAlignment="Top" Width="315" FontSize="25" FontStyle="Italic" Style="{StaticResource YellowLabelStyle}" HorizontalContentAlignment="Right"/>
 
         <Rectangle HorizontalAlignment="Left" Height="95" Margin="39,140,0,0" Stroke="Black" VerticalAlignment="Top" Width="1171" Fill="#ffff00" RadiusX="10" RadiusY="10" />
-        <Button x:Name="SearchButton" Content="Search Room Infomation" HorizontalAlignment="Left" Height="50" Margin="75,162,0,0" VerticalAlignment="Top" Width="262" TabIndex="2" Style="{StaticResource RedButtonStyle}" Click="SearchButton_Click"/>
+        <Button x:Name="SearchButton" Content="Search Room Infomation" HorizontalAlignment="Left" Height="50" Margin="75,162,0,0" VerticalAlignment="Top" Width="262" TabIndex="2" Style="{StaticResource RedButtonStyle}"/>
         <Label Content="Room Description" HorizontalAlignment="Left" Height="45" Margin="388,169,0,0" VerticalAlignment="Top" Width="163" Foreground="#ff4500"/>
         <TextBox x:Name="RoomDescriptionTextBox" HorizontalAlignment="Left" Height="45" Margin="556,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="303" TabIndex="0"/>
         <Label Content="Room Price" HorizontalAlignment="Left" Height="45" Margin="890,169,0,0" VerticalAlignment="Top" Width="108" Foreground="#ff4500"/>

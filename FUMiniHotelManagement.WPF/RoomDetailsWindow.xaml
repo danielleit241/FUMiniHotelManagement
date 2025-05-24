@@ -1,4 +1,4 @@
-﻿<Window x:Class="FUMiniHotelApp.MainWindow"
+﻿<Window x:Class="FUMiniHotelManagement.WPF.RoomDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Room Detail" Height="450" Width="750"
@@ -63,8 +63,8 @@
 
         <!-- Buttons -->
         <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,70,30,0" VerticalAlignment="Top">
-            <Button Content="Save Room " Width="120" Height="40" Background="Yellow" Click="Save_Click" Margin="0,0,0,10"/>
-            <Button Content="Close" Width="120" Height="40" Background="Yellow" Click="Close_Click"/>
+            <Button Content="Save Room " Width="120" Height="40" Background="Yellow" Margin="0,0,0,10"/>
+            <Button Content="Close" Width="120" Height="40" Background="Yellow"/>
         </StackPanel>
     </Grid>
 </Window>

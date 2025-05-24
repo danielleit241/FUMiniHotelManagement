@@ -13,13 +13,13 @@
         <Label x:Name="HelloMsgLabel" Content="Hello, Administrator" HorizontalAlignment="Left" Height="50" Margin="929,6,0,0" VerticalAlignment="Top" Width="315" FontSize="25" FontStyle="Italic" Style="{StaticResource YellowLabelStyle}" HorizontalContentAlignment="Right"/>
 
         <Rectangle HorizontalAlignment="Left" Height="95" Margin="39,140,0,0" Stroke="Black" VerticalAlignment="Top" Width="1171" Fill="#ffff00" RadiusX="10" RadiusY="10" />
-        <Button x:Name="SearchButton" Content="Search Customer" HorizontalAlignment="Left" Height="50" Margin="75,162,0,0" VerticalAlignment="Top" Width="262" TabIndex="2" Style="{StaticResource RedButtonStyle}" Click="SearchButton_Click"/>
+        <Button x:Name="SearchButton" Content="Search Customer" HorizontalAlignment="Left" Height="50" Margin="75,162,0,0" VerticalAlignment="Top" Width="262" TabIndex="2" Style="{StaticResource RedButtonStyle}"/>
         <Label Content="Full Name" HorizontalAlignment="Left" Height="45" Margin="388,169,0,0" VerticalAlignment="Top" Width="152" Foreground="#ff4500"/>
         <TextBox x:Name="FullNameTextBox" HorizontalAlignment="Left" Height="45" Margin="495,167,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="303" TabIndex="0"/>
         <Label Content="Telephone" HorizontalAlignment="Left" Height="45" Margin="890,169,0,0" VerticalAlignment="Top" Width="108" Foreground="#ff4500"/>
         <TextBox x:Name="TelephoneQuantityTextBox" HorizontalAlignment="Left" Height="45" Margin="1003,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" TabIndex="1"/>
 
-        <Button x:Name="CreateButton" Content="Create Customer" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3" Click="CreateButton_Click"/>
+        <Button x:Name="CreateButton" Content="Create Customer" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3"/>
         <Button x:Name="UpdateButton" Content="Update Customer" HorizontalAlignment="Left" Height="50" Margin="1003,367,0,0" VerticalAlignment="Top" Width="185
             " TabIndex="4"/>
         <Button x:Name="DeleteButton" Content="Delete Customer" HorizontalAlignment="Left" Height="50" Margin="1003,444,0,0" VerticalAlignment="Top" Width="185

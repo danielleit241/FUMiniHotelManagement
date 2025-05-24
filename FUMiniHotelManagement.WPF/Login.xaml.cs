@@ -54,15 +54,15 @@ namespace FUMiniHotelManagement.WPF
 
             if (customer != null)
             {
-                MainWindow m = new();
-                m.Show();
+                UserWindow user = new();
+                user.Show();
                 this.Hide();
             }
             else if (email.Equals(configuration["DefaultAccount:Email"]) && password.Equals(configuration["DefaultAccount:Password"]))
             {
                 //set authenticate
-                MainWindow m = new();
-                m.Show();
+                AdminWindow admin = new();
+                admin.Show();
                 this.Hide();
             }
             else
