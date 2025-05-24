@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FUMiniHotelManagement.BLL.Services;
+using FUMiniHotelManagement.DAL.Entities;
 
 namespace FUMiniHotelManagement.WPF
 {
@@ -19,9 +21,16 @@ namespace FUMiniHotelManagement.WPF
     /// </summary>
     public partial class CustomerWindow : Window
     {
+        
         public CustomerWindow()
         {
+            
             InitializeComponent();
+          
         }
+        
+
+
+
     }
 }

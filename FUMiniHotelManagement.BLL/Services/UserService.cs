@@ -41,5 +41,15 @@ namespace FUMiniHotelManagement.BLL.Services
         {
             repo.Delete(customer);
         }
+
+        public List<BookingReservation> GetBookingReservationsByCustomerId(int customerId)
+        {
+            var customer = repo.GetOne(customerId);
+            if (customer != null && customer.BookingReservations != null)
+            {
+                return customer.BookingReservations.ToList();
+            }
+            return new List<BookingReservation>();
+        }
     }
 }

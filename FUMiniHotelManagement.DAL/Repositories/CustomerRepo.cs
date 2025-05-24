@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FUMiniHotelManagement.DAL.Entities;
 
+
 namespace FUMiniHotelManagement.DAL.Repositories
 {
     public class CustomerRepo
@@ -50,5 +51,9 @@ namespace FUMiniHotelManagement.DAL.Repositories
             _context.Customers.Update(x);
             _context.SaveChanges();
         }
-    }
+
+       
+
+        
+}
 }
