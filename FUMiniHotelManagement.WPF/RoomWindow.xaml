@@ -5,18 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="RoomWindow" Height="450" Width="800">
+        Title="RoomWindow" Height="685" Width="1265">
     <Grid>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,130,307,10"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="616,178,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="616,249,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="616,321,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="616,396,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="63,77,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="233,82,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="475,82,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="712,81,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Manage Room Informations" HorizontalAlignment="Left" Height="80" Margin="31,20,0,0" VerticalAlignment="Top" Width="722" FontWeight="Heavy" FontSize="50" FontStyle="Italic" Foreground="Yellow"/>
+        <Label x:Name="HelloMsgLabel" Content="Hello, Administrator" HorizontalAlignment="Left" Height="50" Margin="929,6,0,0" VerticalAlignment="Top" Width="315" FontSize="25" FontStyle="Italic" Style="{StaticResource YellowLabelStyle}" HorizontalContentAlignment="Right"/>
+
+        <Rectangle HorizontalAlignment="Left" Height="95" Margin="39,140,0,0" Stroke="Black" VerticalAlignment="Top" Width="1171" Fill="#ffff00" RadiusX="10" RadiusY="10" />
+        <Button x:Name="SearchButton" Content="Search Room Infomation" HorizontalAlignment="Left" Height="50" Margin="75,162,0,0" VerticalAlignment="Top" Width="262" TabIndex="2" Style="{StaticResource RedButtonStyle}" Click="SearchButton_Click"/>
+        <Label Content="Room Description" HorizontalAlignment="Left" Height="45" Margin="388,169,0,0" VerticalAlignment="Top" Width="163" Foreground="#ff4500"/>
+        <TextBox x:Name="RoomDescriptionTextBox" HorizontalAlignment="Left" Height="45" Margin="556,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="303" TabIndex="0"/>
+        <Label Content="Room Price" HorizontalAlignment="Left" Height="45" Margin="890,169,0,0" VerticalAlignment="Top" Width="108" Foreground="#ff4500"/>
+        <TextBox x:Name="RoomPriceTextBox" HorizontalAlignment="Left" Height="45" Margin="1003,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" TabIndex="1"/>
+
+        <Button x:Name="CreateButton" Content="Create Room" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3"/>
+        <Button x:Name="UpdateButton" Content="Update Room" HorizontalAlignment="Left" Height="50" Margin="1003,367,0,0" VerticalAlignment="Top" Width="185
+            " TabIndex="4"/>
+        <Button x:Name="DeleteButton" Content="Delete Room" HorizontalAlignment="Left" Height="50" Margin="1003,444,0,0" VerticalAlignment="Top" Width="185
+            " TabIndex="5"/>
+        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="50" Margin="1003,540,0,0" VerticalAlignment="Top" Width="185" TabIndex="6"/>
+
+        <DataGrid x:Name="RoomsDataGrid" HorizontalAlignment="Left" Height="310" Margin="40,289,0,0" VerticalAlignment="Top" Width="930" AutoGenerateColumns="False" TabIndex="7" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="40" Binding="{Binding RoomId}" />
+                <DataGridTextColumn Header="Room Number" Width="200" Binding="{Binding RoomNumber}" />
+                <DataGridTextColumn Header="Detail Description" Width="70" Binding="{Binding RoomDetailDescription}" />
+                <DataGridTextColumn Header="Max Capacity" Width="100" Binding="{Binding RoomMaxCapacity}" />
+                <DataGridTextColumn Header="Room Status" Width="200" Binding="{Binding RoomStatus}" />
+                <DataGridTextColumn Header="Price Per Day" Width="70" Binding="{Binding RoomPricePerDay}" />
+                <DataGridTextColumn Header="Room Type Id" Width="100" Binding="{Binding RoomTypeId}" />
+                <DataGridTextColumn Header="Room Type" Width="100" Binding="{Binding RoomType}" />
+                <DataGridTextColumn Header="BookingDetails" Width="70" Binding="{Binding BookingDetails}" />
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

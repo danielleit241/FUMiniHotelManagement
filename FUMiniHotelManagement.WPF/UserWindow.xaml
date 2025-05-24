@@ -7,21 +7,29 @@
         mc:Ignorable="d"
         Title="UserWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="576,67,0,0" VerticalAlignment="Top"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="429,116,10,51"/>
-        <TextBox HorizontalAlignment="Left" Margin="163,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="344,38,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="56,110,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="271,396,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="163,179,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="163,237,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="163,294,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="163,357,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="56,168,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="56,233,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="56,290,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="56,353,0,0" VerticalAlignment="Top"/>
+        <Label Content="Customer Profile" HorizontalAlignment="Left" Height="59" Margin="54,16,0,0" VerticalAlignment="Top" Width="272" FontWeight="Heavy" FontSize="27" FontStyle="Italic" Foreground="Yellow"/>
+        <Label Content="FullName" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FullNameTextBox" HorizontalAlignment="Left" Margin="132,118,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="221" TabIndex="1"/>
+        <Label Content="Telephone" HorizontalAlignment="Left" Margin="20,168,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TelephoneTextBox" HorizontalAlignment="Left" Margin="132,172,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="221" TabIndex="2"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="20,226,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="EmailAddressTextBox" HorizontalAlignment="Left" Margin="132,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="221" TabIndex="3"/>
+        <Label Content="Birthday" HorizontalAlignment="Left" Margin="21,286,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BirthDayTextBox" HorizontalAlignment="Left" Margin="132,294,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="221" TabIndex="4"/>
+        <Button x:Name="UpdateButton" Content="Update Profile" HorizontalAlignment="Left" Height="50" Margin="114,346,0,0" VerticalAlignment="Top" Width="152" TabIndex="5"/>
+        <Rectangle HorizontalAlignment="Left" Height="335" Margin="21,89,0,0" Stroke="Black" VerticalAlignment="Top" Width="338" RadiusX="10" RadiusY="10"/>
 
+
+        <Label Content="Reservation History" HorizontalAlignment="Left" Height="59" Margin="472,21,0,0" VerticalAlignment="Top" Width="272" FontWeight="Heavy" FontSize="27" FontStyle="Italic" Foreground="Yellow"/>
+        <DataGrid x:Name="BookingReservationHistoryDataGrids" Margin="439,89,23,10" Width="338" TabIndex="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding BookingReservationId}"/>
+                <DataGridTextColumn Header="Booking Date" Width="100" Binding="{Binding BookingDate}"/>
+                <DataGridTextColumn Header="Total Price" Width="100" Binding="{Binding TotalPrice}"/>
+                <DataGridTextColumn Header="BookingStatus" Width="100" Binding="{Binding BookingStatus}"/>
+                <DataGridTextColumn Header="CustomerId" Width="100" Binding="{Binding CustomerId}"/>
+                <DataGridTextColumn Header="BookingDetails" Width="100" Binding="{Binding BookingDetails}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
