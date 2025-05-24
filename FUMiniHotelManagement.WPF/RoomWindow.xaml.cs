@@ -23,5 +23,6 @@ namespace FUMiniHotelManagement.WPF
         {
             InitializeComponent();
         }
+
     }
 }

@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="10">
+        <!-- Layout chính: 3 dòng (Header + Nội dung) -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,171,289,47"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="230,121,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="591,189,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="591,287,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="426,376,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Center" Margin="0,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92"/>
+
     </Grid>
 </Window>
