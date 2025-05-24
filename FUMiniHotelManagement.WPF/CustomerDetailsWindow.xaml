@@ -1,11 +1,11 @@
-﻿<Window x:Class="AirConditionerApp.MainWindow"
+﻿<Window x:Class="FUMiniHotelApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Air Conditioner Detail" Height="450" Width="750"
+        Title="Customer Detail" Height="450" Width="750"
         Background="Red" WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10">
-        <TextBlock Text="Create | Update Air Conditioner"
+        <TextBlock Text="Create | Update Customer"
                    FontSize="20" FontWeight="Bold" Foreground="Yellow"
                    Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
