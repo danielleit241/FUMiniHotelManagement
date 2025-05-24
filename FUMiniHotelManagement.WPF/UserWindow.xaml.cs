@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using FUMiniHotelManagement.DAL.Entities;
+﻿using System.Windows;
 using FUMiniHotelManagement.BLL.Services;
+using FUMiniHotelManagement.DAL.Entities;
 
 namespace FUMiniHotelManagement.WPF
 {
@@ -21,30 +9,13 @@ namespace FUMiniHotelManagement.WPF
     /// </summary>
     public partial class UserWindow : Window
     {
-        public Customer? UserLogin { get; set; }  
-        private readonly UserService userService;
+        public Customer? UserLogin { get; set; }
+        private readonly UserService userService = new();
+        private readonly BookingService bookingService = new();
 
         public UserWindow()
         {
             InitializeComponent();
-            userService = new UserService();
-            UpdateButton.Click += UpdateButton_Click;
-            QuitButton.Click += QuitButton_Click;
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (UserLogin != null)
-            {
-                LoadUserProfile();
-                LoadBookingHistory();
-                
-            }
-            else
-            {
-                MessageBox.Show("User is not logged in.");
-                this.Close();
-            }
         }
 
         private void LoadUserProfile()
@@ -69,8 +40,7 @@ namespace FUMiniHotelManagement.WPF
                 return;
             }
 
-            var bookingList = userService.GetBookingReservationsByCustomerId(UserLogin.CustomerId);
-            BookingReservationHistoryDataGrids.ItemsSource = bookingList;
+            BookingReservationHistoryDataGrids.ItemsSource = bookingService.GetBookingReservationsByCustomerId(UserLogin.CustomerId);
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
@@ -110,6 +80,20 @@ namespace FUMiniHotelManagement.WPF
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (UserLogin != null)
+            {
+                LoadUserProfile();
+                LoadBookingHistory();
+            }
+            else
+            {
+                MessageBox.Show("User is not logged in.");
+                this.Close();
+            }
         }
     }
 }

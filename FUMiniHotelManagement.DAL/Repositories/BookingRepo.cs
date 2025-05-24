@@ -18,10 +18,16 @@ namespace FUMiniHotelManagement.DAL.Repositories
             return _context.BookingReservations.Include("BookingDetails").Include("Customer").ToList();
         }
 
-        public List<BookingReservation> GetOne()
+        public BookingReservation? GetOne(int id)
         {
             _context = new();
-            return _context.BookingReservations.Include("BookingDetails").Include("Customer").ToList();
+            return _context.BookingReservations.FirstOrDefault(b => b.BookingReservationId == id);
+        }
+
+        public List<BookingReservation>? GetAllByCustomerId(int id)
+        {
+            _context = new();
+            return _context.BookingReservations.Where(b => b.CustomerId == id).Include("Customer").Include(b => b.BookingDetails).ToList();
         }
 
         public void Create(BookingReservation x)

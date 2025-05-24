@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800">
-    <Grid Loaded="Grid_Loaded">
+        Title="UserWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="53*"/>
             <ColumnDefinition Width="748*"/>
@@ -25,16 +25,30 @@
 
 
         <Label Content="Reservation History" HorizontalAlignment="Left" Height="59" Margin="420,21,0,0" VerticalAlignment="Top" Width="272" FontWeight="Heavy" FontSize="27" FontStyle="Italic" Foreground="Yellow" Grid.Column="1"/>
-        <DataGrid x:Name="BookingReservationHistoryDataGrids" Margin="386,89,23,93" Width="338" TabIndex="6" Grid.Column="1">
+        <DataGrid x:Name="BookingReservationHistoryDataGrids" AutoGenerateColumns="False" Margin="386,89,23,93" Width="338" TabIndex="6" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding BookingReservationId}"/>
                 <DataGridTextColumn Header="Booking Date" Width="100" Binding="{Binding BookingDate}"/>
                 <DataGridTextColumn Header="Total Price" Width="100" Binding="{Binding TotalPrice}"/>
                 <DataGridTextColumn Header="BookingStatus" Width="100" Binding="{Binding BookingStatus}"/>
                 <DataGridTextColumn Header="CustomerId" Width="100" Binding="{Binding CustomerId}"/>
-                <DataGridTextColumn Header="BookingDetails" Width="100" Binding="{Binding BookingDetails}"/>
+                <DataGridTextColumn Header="Full Name" Width="100" Binding="{Binding Customer.CustomerFullName}"/>
+                <DataGridTextColumn Header="#Details" Binding="{Binding BookingDetails.Count}" Width="100"/>
             </DataGrid.Columns>
+
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid ItemsSource="{Binding BookingDetails}" AutoGenerateColumns="False" Margin="10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Room ID" Binding="{Binding RoomId}" />
+                            <DataGridTextColumn Header="Check-in" Binding="{Binding StartDate}" />
+                            <DataGridTextColumn Header="Check-out" Binding="{Binding EndDate}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
+
         <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="50" Margin="480,360,0,0" VerticalAlignment="Top" Width="152" TabIndex="5" Grid.Column="1"/>
     </Grid>
 </Window>
