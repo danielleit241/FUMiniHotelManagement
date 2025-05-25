@@ -21,7 +21,7 @@
         <TextBox x:Name="EmailAddressTextBox" HorizontalAlignment="Left" Margin="80,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TabIndex="3" Grid.Column="1"/>
         <Label Content="Birthday" HorizontalAlignment="Left" Margin="21,286,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <TextBox x:Name="BirthDayTextBox" HorizontalAlignment="Left" Margin="80,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TabIndex="4" Grid.Column="1"/>
-        <Button x:Name="UpdateButton" Content="Update Profile" HorizontalAlignment="Left" Height="50" Margin="62,360,0,0" VerticalAlignment="Top" Width="152" TabIndex="5" Grid.Column="1"/>
+        <Button x:Name="UpdateButton" Content="Update Profile" HorizontalAlignment="Left" Height="50" Margin="62,360,0,0" VerticalAlignment="Top" Width="152" TabIndex="5" Grid.Column="1" Click="UpdateButton_Click"/>
 
 
         <Label Content="Reservation History" HorizontalAlignment="Left" Height="59" Margin="420,21,0,0" VerticalAlignment="Top" Width="272" FontWeight="Heavy" FontSize="27" FontStyle="Italic" Foreground="Yellow" Grid.Column="1"/>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,11 @@ namespace FUMiniHotelManagement.BLL.Services
         public List<BookingReservation>? GetBookingReservationsByCustomerId(int customerId)
         {
             return _repo.GetAllByCustomerId(customerId);
+        }
+
+        public List<BookingReservation> GetAllBookingReservations()
+        {
+            return _repo.GetAll();
         }
     }
 }

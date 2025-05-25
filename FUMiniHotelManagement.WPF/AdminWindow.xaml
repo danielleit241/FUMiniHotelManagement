@@ -5,20 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
-    <Grid Margin="10">
+        Title="AdminWindow" Height="647" Width="1107">
+    <Grid Margin="10,0,10,10" Height="414" VerticalAlignment="Bottom" Loaded="Grid_Loaded">
         <!-- Layout chính: 3 dòng (Header + Nội dung) -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,171,289,47"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="230,121,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="591,189,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="591,287,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="426,376,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Center" Margin="0,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92"/>
+        <DataGrid x:Name="BookingReservationDataGrid" HorizontalAlignment="Left" Height="310" Margin="36,-4,0,0" VerticalAlignment="Top" Width="640" AutoGenerateColumns="False" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Booking Reservation Id" Width="40" Binding="{Binding BookingReservationId}" />
+                <DataGridTextColumn Header="Booking Date" Width="150" Binding="{Binding BookingDate}" />
+                <DataGridTextColumn Header="Total Price" Width="70" Binding="{Binding TotalPrice}" />
+                <DataGridTextColumn Header="Customer Id" Width="100" Binding="{Binding CustomerId}" />
+                <DataGridTextColumn Header="Booking Status" Width="100" Binding="{Binding BookingStatus}" />
+                <DataGridTextColumn Header="Booking Details" Width="70" Binding="{Binding BookingDetails}" />
+                <DataGridTextColumn Header="Customer" Width="100" Binding="{Binding Customer}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="255,-52,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button Content="Manage Customer" HorizontalAlignment="Left" Margin="730,18,0,0" VerticalAlignment="Top" Click="ManageCustomer_Click" Grid.ColumnSpan="5"/>
+        <Button Content="Manage Room" HorizontalAlignment="Left" Margin="739,76,0,0" VerticalAlignment="Top" Click="ManageRoom_Click" Grid.Row="1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="779,183,0,193" Grid.Row="1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="36,-156,0,0" VerticalAlignment="Top"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="367,-156,0,0" VerticalAlignment="Top" Width="92"/>
 
     </Grid>
 </Window>
