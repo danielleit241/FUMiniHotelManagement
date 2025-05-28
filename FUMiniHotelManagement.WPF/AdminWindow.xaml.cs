@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FUMiniHotelManagement.BLL.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace FUMiniHotelManagement.WPF
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private readonly BookingService _service = new();
+
         public AdminWindow()
         {
             InitializeComponent();
