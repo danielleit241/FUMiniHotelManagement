@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="10">
         <!-- Layout chính: 3 dòng (Header + Nội dung) -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,171,289,47"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="230,121,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="591,189,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="591,287,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="426,376,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Center" Margin="0,39,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92"/>
-
+        <Label Content="Admin Dashboard" HorizontalAlignment="Left" Margin="33,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="202"/>
+        <DataGrid Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,171,289,96"/>
+        <Label Content="Booking Reservation History" HorizontalAlignment="Left" Margin="180,127,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164"/>
+        <Label x:Name="TotalMoneyLable" Content="Total Money: " HorizontalAlignment="Left" Margin="33,341,0,0" Grid.Row="1" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="TotalRoomBookedLable" Content="Total Room Booked: " HorizontalAlignment="Left" Margin="33,372,0,0" Grid.Row="1" VerticalAlignment="Top" Width="163"/>
+        <Button x:Name="ManageRoomButton" Content="Manage Room" HorizontalAlignment="Left" Margin="591,171,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="38" Click="ManageRoomButton_Click"/>
+        <Button x:Name="ManageCustomerButton" Content="Manage Customer" HorizontalAlignment="Left" Margin="591,250,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="38" Click="ManageCustomerButton_Click"/>
+        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Margin="591,329,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="38" Click="QuitButton_Click"/>
     </Grid>
 </Window>

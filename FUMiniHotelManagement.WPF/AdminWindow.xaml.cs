@@ -23,5 +23,22 @@ namespace FUMiniHotelManagement.WPF
         {
             InitializeComponent();
         }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ManageRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            RoomWindow r = new RoomWindow();
+            r.ShowDialog();
+        }
+
+        private void ManageCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow c = new CustomerWindow();
+            c.ShowDialog();
+        }
     }
 }

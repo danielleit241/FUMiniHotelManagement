@@ -30,8 +30,8 @@ namespace FUMiniHotelManagement.WPF
             else
             {
                 DetailWindowModeLabel.Content = "Create Room Information";
-                RoomIdTextBox.IsEnabled = false;
             }
+            RoomIdTextBox.IsEnabled = false;
         }
 
         private void FillElements(RoomInformation x)
@@ -57,6 +57,12 @@ namespace FUMiniHotelManagement.WPF
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            var selectedValue = RoomTypeIdComboBox.SelectedValue?.ToString();
+            if (string.IsNullOrEmpty(selectedValue))
+            {
+                MessageBox.Show("Please select a valid Room Type.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             var x = new RoomInformation
             {
@@ -65,8 +71,9 @@ namespace FUMiniHotelManagement.WPF
                 RoomMaxCapacity = int.Parse(RoomMaxCapacityTextBox.Text),
                 RoomStatus = byte.Parse(RoomStatusTextBox.Text),
                 RoomPricePerDay = decimal.Parse(RoomPricePerDayTextBox.Text),
-                RoomTypeId = int.Parse(RoomTypeIdComboBox.SelectedValue.ToString())
+                RoomTypeId = int.Parse(selectedValue)
             };
+
             if (EditedRoom == null)
             {
                 _roomService.CreateRoom(x);

@@ -24,9 +24,9 @@ namespace FUMiniHotelManagement.WPF
         private UserService _service = new();
         public CustomerWindow()
         {
-            
+
             InitializeComponent();
-          
+
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace FUMiniHotelManagement.WPF
             MessageBoxResult answer = MessageBox.Show("Are you sure to quit?", "Confirm?", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (answer == MessageBoxResult.Yes)
             {
-                Application.Current.Shutdown();
+                this.Close();
             }
             else
             {
@@ -65,14 +65,14 @@ namespace FUMiniHotelManagement.WPF
         {
             Customer? selected = CustomersDataGrid.SelectedItem as Customer;
 
-            if(selected == null)
+            if (selected == null)
             {
                 MessageBox.Show("Please select a customer to delete.", "Select a row", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
 
             MessageBoxResult answer = MessageBox.Show($"Are you sure to delete {selected.CustomerFullName}?", "Confirm?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(answer == MessageBoxResult.Yes)
+            if (answer == MessageBoxResult.Yes)
             {
                 selected.CustomerStatus = 0;
                 _service.DeleteCustomer(selected);
@@ -97,7 +97,7 @@ namespace FUMiniHotelManagement.WPF
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             Customer? selected = CustomersDataGrid.SelectedItem as Customer;
-            if(selected == null)
+            if (selected == null)
             {
                 MessageBox.Show("Please select a customer to update.", "Select a row", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using FUMiniHotelManagement.BLL.Services;
 using FUMiniHotelManagement.DAL.Entities;
 
@@ -41,7 +29,7 @@ namespace FUMiniHotelManagement.WPF
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -69,7 +57,7 @@ namespace FUMiniHotelManagement.WPF
             RoomInformation? selectedRoom = RoomsDataGrid.SelectedItem as RoomInformation;
             if (selectedRoom == null)
             {
-                MessageBox.Show("Please selected a room to update.", "Select a row", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Please select a room to update.", "Select a row", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return null;
             }
 
@@ -99,7 +87,7 @@ namespace FUMiniHotelManagement.WPF
                 price = parsedPrice;
             }
 
-            var result = _service.SearchRoomsByDesOrPrice(RoomDescriptionTextBox.Text.ToString(), price);
+            var result = _service.SearchRoomsByDesOrPrice(RoomDescriptionTextBox.Text, price);
 
             FillGridData(result);
         }

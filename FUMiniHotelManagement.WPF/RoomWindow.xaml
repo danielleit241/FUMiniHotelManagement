@@ -5,27 +5,147 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="RoomWindow" Height="685" Width="1265" Loaded="Window_Loaded">
+        Title="Manage Room Informations" Height="685" Width="1265" Loaded="Window_Loaded"
+        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
+        <!-- Header -->
+        <Label Content="Manage Room Informations"
+               Style="{StaticResource LabelStyle}"
+               FontWeight="Bold"
+               FontSize="50"
+               FontStyle="Italic"
+               Foreground="{StaticResource AccentBrush}"
+               HorizontalAlignment="Left"
+               Height="80"
+               Margin="31,20,0,0"
+               VerticalAlignment="Top"
+               Width="722"/>
+        <Label x:Name="HelloMsgLabel"
+               Content="Hello, Administrator"
+               Style="{StaticResource LabelStyle}"
+               FontSize="25"
+               FontStyle="Italic"
+               HorizontalContentAlignment="Right"
+               HorizontalAlignment="Left"
+               Height="50"
+               Margin="929,6,0,0"
+               VerticalAlignment="Top"
+               Width="315"/>
 
-        <Label Content="Manage Room Informations" HorizontalAlignment="Left" Height="80" Margin="31,20,0,0" VerticalAlignment="Top" Width="722" FontWeight="Heavy" FontSize="50" FontStyle="Italic" Foreground="Yellow"/>
-        <Label x:Name="HelloMsgLabel" Content="Hello, Administrator" HorizontalAlignment="Left" Height="50" Margin="929,6,0,0" VerticalAlignment="Top" Width="315" FontSize="25" FontStyle="Italic" Style="{StaticResource YellowLabelStyle}" HorizontalContentAlignment="Right"/>
+        <!-- Search Section Background -->
+        <Rectangle HorizontalAlignment="Left"
+                   Height="95"
+                   Margin="39,140,0,0"
+                   Stroke="{StaticResource AccentBrush}"
+                   StrokeThickness="2"
+                   VerticalAlignment="Top"
+                   Width="1171"
+                   Fill="{StaticResource SecondaryBrush}"
+                   RadiusX="10"
+                   RadiusY="10" />
 
-        <Rectangle HorizontalAlignment="Left" Height="95" Margin="39,140,0,0" Stroke="Black" VerticalAlignment="Top" Width="1171" Fill="#ffff00" RadiusX="10" RadiusY="10" />
-        <Button x:Name="SearchButton" Content="Search Room Infomation" HorizontalAlignment="Left" Height="50" Margin="75,162,0,0" VerticalAlignment="Top" Width="262" TabIndex="2" Style="{StaticResource RedButtonStyle}" Click="SearchButton_Click"/>
-        <Label Content="Room Description" HorizontalAlignment="Left" Height="45" Margin="388,169,0,0" VerticalAlignment="Top" Width="163" Foreground="#ff4500"/>
-        <TextBox x:Name="RoomDescriptionTextBox" HorizontalAlignment="Left" Height="45" Margin="556,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="303" TabIndex="0"/>
-        <Label Content="Room Price" HorizontalAlignment="Left" Height="45" Margin="890,169,0,0" VerticalAlignment="Top" Width="108" Foreground="#ff4500"/>
-        <TextBox x:Name="RoomPriceTextBox" HorizontalAlignment="Left" Height="45" Margin="1003,165,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="185" TabIndex="1"/>
+        <!-- Search Button -->
+        <Button x:Name="SearchButton"
+                Content="Search Room Information"
+                Style="{StaticResource ButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="75,162,0,0"
+                VerticalAlignment="Top"
+                Width="262"
+                TabIndex="2"
+                Click="SearchButton_Click"/>
 
-        <Button x:Name="CreateButton" Content="Create Room" HorizontalAlignment="Left" Height="50" Margin="1003,294,0,0" VerticalAlignment="Top" Width="185" TabIndex="3" Click="CreateButton_Click"/>
-        <Button x:Name="UpdateButton" Content="Update Room" HorizontalAlignment="Left" Height="50" Margin="1003,367,0,0" VerticalAlignment="Top" Width="185
-            " TabIndex="4" Click="UpdateButton_Click"/>
-        <Button x:Name="DeleteButton" Content="Delete Room" HorizontalAlignment="Left" Height="50" Margin="1003,444,0,0" VerticalAlignment="Top" Width="185
-            " TabIndex="5" Click="DeleteButton_Click"/>
-        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="50" Margin="1003,540,0,0" VerticalAlignment="Top" Width="185" TabIndex="6" Click="QuitButton_Click"/>
+        <!-- Room Description -->
+        <Label Content="Room Description"
+               Style="{StaticResource LabelStyle}"
+               HorizontalAlignment="Left"
+               Height="45"
+               Margin="388,169,0,0"
+               VerticalAlignment="Top"
+               Width="163"/>
+        <TextBox x:Name="RoomDescriptionTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 HorizontalAlignment="Left"
+                 Height="45"
+                 Margin="556,165,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="303"
+                 TabIndex="0"/>
 
-        <DataGrid x:Name="RoomsDataGrid" HorizontalAlignment="Left" Height="310" Margin="40,289,0,0" VerticalAlignment="Top" Width="930" AutoGenerateColumns="False" TabIndex="7" >
+        <!-- Room Price -->
+        <Label Content="Room Price"
+               Style="{StaticResource LabelStyle}"
+               HorizontalAlignment="Left"
+               Height="45"
+               Margin="890,169,0,0"
+               VerticalAlignment="Top"
+               Width="108"/>
+        <TextBox x:Name="RoomPriceTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 HorizontalAlignment="Left"
+                 Height="45"
+                 Margin="1003,165,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="185"
+                 TabIndex="1"/>
+
+        <!-- CRUD Buttons -->
+        <Button x:Name="CreateButton"
+                Content="Create Room"
+                Style="{StaticResource ButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="1003,294,0,0"
+                VerticalAlignment="Top"
+                Width="185"
+                TabIndex="3"
+                Click="CreateButton_Click"/>
+        <Button x:Name="UpdateButton"
+                Content="Update Room"
+                Style="{StaticResource SuccessButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="1003,367,0,0"
+                VerticalAlignment="Top"
+                Width="185"
+                TabIndex="4"
+                Click="UpdateButton_Click"/>
+        <Button x:Name="DeleteButton"
+                Content="Delete Room"
+                Style="{StaticResource ErrorButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="1003,444,0,0"
+                VerticalAlignment="Top"
+                Width="185"
+                TabIndex="5"
+                Click="DeleteButton_Click"/>
+        <Button x:Name="QuitButton"
+                Content="Quit"
+                Style="{StaticResource WarningButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="1003,540,0,0"
+                VerticalAlignment="Top"
+                Width="185"
+                TabIndex="6"
+                Click="QuitButton_Click"/>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="RoomsDataGrid"
+                  HorizontalAlignment="Left"
+                  Height="310"
+                  Margin="40,289,0,0"
+                  VerticalAlignment="Top"
+                  Width="930"
+                  AutoGenerateColumns="False"
+                  TabIndex="7"
+                  Background="{StaticResource SecondaryBrush}"
+                  Foreground="{StaticResource TextPrimaryBrush}"
+                  BorderBrush="{StaticResource AccentBrush}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="40" Binding="{Binding RoomId}" />
                 <DataGridTextColumn Header="Room Number" Width="60" Binding="{Binding RoomNumber}" />
@@ -38,6 +158,5 @@
                 <DataGridTextColumn Header="BookingDetails" Width="100" Binding="{Binding BookingDetails}" />
             </DataGrid.Columns>
         </DataGrid>
-
     </Grid>
 </Window>

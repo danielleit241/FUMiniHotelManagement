@@ -5,24 +5,139 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="UserWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Customer Profile" Height="450" Width="1096" Loaded="Window_Loaded"
+        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="53*"/>
             <ColumnDefinition Width="748*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Customer Profile" HorizontalAlignment="Left" Height="59" Margin="10,10,0,0" VerticalAlignment="Top" Width="236" FontWeight="Heavy" FontSize="27" FontStyle="Italic" Foreground="Yellow" Grid.ColumnSpan="2"/>
-        <Rectangle HorizontalAlignment="Left" Height="252" Margin="10,89,0,0" Stroke="Black" VerticalAlignment="Top" Width="780" RadiusX="10" RadiusY="10" Grid.ColumnSpan="2"/>
-        <Label Content="FullName" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="FullNameTextBox" HorizontalAlignment="Left" Margin="80,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TabIndex="1" Grid.Column="1"/>
-        <Label Content="Telephone" HorizontalAlignment="Left" Margin="20,168,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="TelephoneTextBox" HorizontalAlignment="Left" Margin="80,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TabIndex="2" Grid.Column="1"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="20,226,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="EmailAddressTextBox" HorizontalAlignment="Left" Margin="80,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TabIndex="3" Grid.Column="1"/>
-        <Label Content="Birthday" HorizontalAlignment="Left" Margin="21,286,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="BirthDayTextBox" HorizontalAlignment="Left" Margin="80,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TabIndex="4" Grid.Column="1"/>
-        <Button x:Name="UpdateButton" Content="Update Profile" HorizontalAlignment="Left" Height="50" Margin="62,360,0,0" VerticalAlignment="Top" Width="152" TabIndex="5" Grid.Column="1"/>
-        <DataGrid x:Name="BookingReservationHistoryDataGrids" AutoGenerateColumns="False" Margin="311,89,23,93" TabIndex="6" Grid.Column="1">
+
+        <!-- Header -->
+        <Label Content="Customer Profile"
+               Style="{StaticResource LabelStyle}"
+               FontWeight="Bold"
+               FontSize="40"
+               FontStyle="Italic"
+               HorizontalAlignment="Left"
+               Height="59"
+               Margin="10,10,0,0"
+               VerticalAlignment="Top"
+               Width="339"
+               Foreground="{StaticResource AccentBrush}"
+               Grid.ColumnSpan="2"/>
+
+        <!-- Profile area background -->
+        <Rectangle HorizontalAlignment="Left"
+                   Height="252"
+                   Margin="10,89,0,0"
+                   Stroke="{StaticResource AccentBrush}"
+                   StrokeThickness="2"
+                   VerticalAlignment="Top"
+                   Width="1076"
+                   RadiusX="10"
+                   RadiusY="10"
+                   Fill="{StaticResource SecondaryBrush}"
+                   Opacity="0.95"
+                   Grid.ColumnSpan="2"/>
+
+        <!-- FullName -->
+        <Label Content="Full Name"
+               Style="{StaticResource LabelStyle}"
+               HorizontalAlignment="Left"
+               Margin="30,110,0,0"
+               VerticalAlignment="Top"
+               Grid.ColumnSpan="2"/>
+        <TextBox x:Name="FullNameTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 HorizontalAlignment="Left"
+                 Margin="120,118,0,0"
+                 VerticalAlignment="Top"
+                 Width="221"
+                 TabIndex="1"
+                 Grid.Column="1"/>
+
+        <!-- Telephone -->
+        <Label Content="Telephone"
+               Style="{StaticResource LabelStyle}"
+               HorizontalAlignment="Left"
+               Margin="30,168,0,0"
+               VerticalAlignment="Top"
+               Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TelephoneTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 HorizontalAlignment="Left"
+                 Margin="120,172,0,0"
+                 VerticalAlignment="Top"
+                 Width="221"
+                 TabIndex="2"
+                 Grid.Column="1"/>
+
+        <!-- Email -->
+        <Label Content="Email"
+               Style="{StaticResource LabelStyle}"
+               HorizontalAlignment="Left"
+               Margin="30,226,0,0"
+               VerticalAlignment="Top"
+               Grid.ColumnSpan="2"/>
+        <TextBox x:Name="EmailAddressTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 HorizontalAlignment="Left"
+                 Margin="120,230,0,0"
+                 VerticalAlignment="Top"
+                 Width="221"
+                 TabIndex="3"
+                 Grid.Column="1"/>
+
+        <!-- Birthday -->
+        <Label Content="Birthday"
+               Style="{StaticResource LabelStyle}"
+               HorizontalAlignment="Left"
+               Margin="30,286,0,0"
+               VerticalAlignment="Top"
+               Grid.ColumnSpan="2"/>
+        <TextBox x:Name="BirthDayTextBox"
+                 Style="{StaticResource TextBoxStyle}"
+                 HorizontalAlignment="Left"
+                 Margin="120,294,0,0"
+                 VerticalAlignment="Top"
+                 Width="221"
+                 TabIndex="4"
+                 Grid.Column="1"/>
+
+        <!-- Update Button -->
+        <Button x:Name="UpdateButton"
+                Content="Update Profile"
+                Style="{StaticResource ButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="62,360,0,0"
+                VerticalAlignment="Top"
+                Width="152"
+                TabIndex="5"
+                Grid.Column="1"/>
+
+        <!-- Quit Button (using Error color for emphasis) -->
+        <Button x:Name="QuitButton"
+                Content="Quit"
+                Style="{StaticResource ErrorButtonStyle}"
+                HorizontalAlignment="Left"
+                Height="50"
+                Margin="609,360,0,0"
+                VerticalAlignment="Top"
+                Width="152"
+                TabIndex="6"
+                Grid.Column="1" Click="QuitButton_Click_1"/>
+
+        <!-- Booking Reservation History DataGrid -->
+        <DataGrid x:Name="BookingReservationHistoryDataGrids"
+                  AutoGenerateColumns="False"
+                  Margin="370,0,23,93"
+                  TabIndex="7"
+                  Grid.Column="1"
+                  Background="{StaticResource SecondaryBrush}"
+                  Foreground="{StaticResource TextPrimaryBrush}"
+                  BorderBrush="{StaticResource AccentBrush}" Height="231" VerticalAlignment="Bottom">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding BookingReservationId}"/>
                 <DataGridTextColumn Header="Booking Date" Width="100" Binding="{Binding BookingDate}"/>
@@ -32,10 +147,12 @@
                 <DataGridTextColumn Header="Full Name" Width="100" Binding="{Binding Customer.CustomerFullName}"/>
                 <DataGridTextColumn Header="#Details" Binding="{Binding BookingDetails.Count}" Width="100"/>
             </DataGrid.Columns>
-
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <DataGrid ItemsSource="{Binding BookingDetails}" AutoGenerateColumns="False" Margin="10">
+                    <DataGrid ItemsSource="{Binding BookingDetails}" AutoGenerateColumns="False" Margin="10"
+                              Background="{StaticResource SecondaryBrush}"
+                              Foreground="{StaticResource TextPrimaryBrush}"
+                              BorderBrush="{StaticResource AccentBrush}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Room ID" Binding="{Binding RoomId}" />
                             <DataGridTextColumn Header="Check-in" Binding="{Binding StartDate}" />
@@ -45,7 +162,5 @@
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
-
-        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Height="50" Margin="480,360,0,0" VerticalAlignment="Top" Width="152" TabIndex="5" Grid.Column="1"/>
     </Grid>
 </Window>
