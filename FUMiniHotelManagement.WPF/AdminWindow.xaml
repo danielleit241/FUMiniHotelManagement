@@ -1,24 +1,121 @@
 ﻿<Window x:Class="FUMiniHotelManagement.WPF.AdminWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
-        mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
+       mc:Ignorable="d"
+       Title="Admin Dashboard"
+       Height="450"
+       Width="800"
+       WindowStartupLocation="CenterScreen"
+       ResizeMode="NoResize"
+       Style="{StaticResource WindowStyle}"
+       Loaded="Window_Loaded">
+
     <Grid Margin="10">
-        <!-- Layout chính: 3 dòng (Header + Nội dung) -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="89*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Main Layout: 2 Rows (Header + Content) -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Content="Admin Dashboard" HorizontalAlignment="Left" Margin="33,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="202"/>
-        <DataGrid Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,171,289,96"/>
-        <Label Content="Booking Reservation History" HorizontalAlignment="Left" Margin="180,127,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164"/>
-        <Label x:Name="TotalMoneyLable" Content="Total Money: " HorizontalAlignment="Left" Margin="33,341,0,0" Grid.Row="1" VerticalAlignment="Top" Width="163"/>
-        <Label x:Name="TotalRoomBookedLable" Content="Total Room Booked: " HorizontalAlignment="Left" Margin="33,372,0,0" Grid.Row="1" VerticalAlignment="Top" Width="163"/>
-        <Button x:Name="ManageRoomButton" Content="Manage Room" HorizontalAlignment="Left" Margin="591,171,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="38" Click="ManageRoomButton_Click"/>
-        <Button x:Name="ManageCustomerButton" Content="Manage Customer" HorizontalAlignment="Left" Margin="591,250,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="38" Click="ManageCustomerButton_Click"/>
-        <Button x:Name="QuitButton" Content="Quit" HorizontalAlignment="Left" Margin="591,329,0,0" Grid.Row="1" VerticalAlignment="Top" Width="111" Height="38" Click="QuitButton_Click"/>
+
+        <!-- Admin Dashboard Title -->
+        <Label Content="Admin Dashboard"
+              Style="{StaticResource LabelStyle}"
+              FontSize="30"
+              FontWeight="Bold"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              Margin="15,0,0,0"
+              Grid.Row="0"/>
+
+        <!-- Content Section -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Booking Reservation DataGrid -->
+            <DataGrid x:Name="AdminBookingReservationHistoryDataGrids"
+                     AutoGenerateColumns="False"
+                     TabIndex="7"
+                     Background="{StaticResource SecondaryBrush}"
+                     Foreground="{StaticResource TextPrimaryBrush}"
+                     BorderBrush="{StaticResource AccentBrush}"
+                     Grid.Column="0"
+                     Margin="0,0,10,10">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="50" Binding="{Binding BookingReservationId}"/>
+                    <DataGridTextColumn Header="Booking Date" Width="100" Binding="{Binding BookingDate}"/>
+                    <DataGridTextColumn Header="Total Price" Width="100" Binding="{Binding TotalPrice}"/>
+                    <DataGridTextColumn Header="BookingStatus" Width="100" Binding="{Binding BookingStatus}"/>
+                    <DataGridTextColumn Header="CustomerId" Width="100" Binding="{Binding CustomerId}"/>
+                    <DataGridTextColumn Header="Full Name" Width="100" Binding="{Binding Customer.CustomerFullName}"/>
+                    <DataGridTextColumn Header="#Details" Binding="{Binding BookingDetails.Count}" Width="100"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <DataGrid ItemsSource="{Binding BookingDetails}"
+                                 AutoGenerateColumns="False"
+                                 Margin="10"
+                                 Background="{StaticResource SecondaryBrush}"
+                                 Foreground="{StaticResource TextPrimaryBrush}"
+                                 BorderBrush="{StaticResource AccentBrush}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Room ID" Binding="{Binding RoomId}" />
+                                <DataGridTextColumn Header="Check-in" Binding="{Binding StartDate}" />
+                                <DataGridTextColumn Header="Check-out" Binding="{Binding EndDate}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+            </DataGrid>
+
+            <!-- Booking Reservation Summary -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,10">
+                <Label Content="Booking Reservation"
+                      Style="{StaticResource LabelStyle}"
+                      FontSize="20"
+                      FontWeight="Bold"
+                      Margin="0,0,0,20"/>
+                <Label x:Name="TotalRoomBookedLable"
+                      Content="Total Room Booked: "
+                      Style="{StaticResource LabelStyle}"
+                      FontSize="16"
+                      Margin="0,10,0,5"/>
+                <Label x:Name="TotalMoneyLable"
+                      Content="Total Money: "
+                      Style="{StaticResource LabelStyle}"
+                      FontSize="16"
+                      Margin="0,5,0,20"/>
+                <Button x:Name="ManageRoomButton"
+                       Content="Manage Room"
+                       Style="{StaticResource ButtonStyle}"
+                       Height="38"
+                       Width="150"
+                       Margin="0,10,0,0"
+                       Click="ManageRoomButton_Click"/>
+                <Button x:Name="ManageCustomerButton"
+                       Content="Manage Customer"
+                       Style="{StaticResource ButtonStyle}"
+                       Height="38"
+                       Width="150"
+                       Margin="0,10,0,0"
+                       Click="ManageCustomerButton_Click"/>
+                <Button x:Name="QuitButton"
+                       Content="Quit"
+                       Style="{StaticResource ErrorButtonStyle}"
+                       Height="38"
+                       Width="150"
+                       Margin="0,10,0,0"
+                       Click="QuitButton_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

@@ -34,14 +34,27 @@ namespace FUMiniHotelManagement.WPF
 
         private void ManageRoomButton_Click(object sender, RoutedEventArgs e)
         {
-            RoomWindow r = new RoomWindow();
+            RoomWindow r = new();
             r.ShowDialog();
         }
 
         private void ManageCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            CustomerWindow c = new CustomerWindow();
+            CustomerWindow c = new();
             c.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            FillBokingHistory();
+            TotalMoneyLable.Content = "Total money: " + _service.GetTotalPrice();
+            TotalRoomBookedLable.Content = "Total Rooms Booked: " + _service.GetTotalBookingCount();
+        }
+
+        private void FillBokingHistory()
+        {
+            AdminBookingReservationHistoryDataGrids.ItemsSource = null;
+            AdminBookingReservationHistoryDataGrids.ItemsSource = _service.GetAllBookingReservations();
         }
     }
 }

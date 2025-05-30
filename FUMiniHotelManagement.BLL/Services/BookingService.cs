@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FUMiniHotelManagement.DAL.Entities;
+﻿using FUMiniHotelManagement.DAL.Entities;
 using FUMiniHotelManagement.DAL.Repositories;
 
 namespace FUMiniHotelManagement.BLL.Services
@@ -21,5 +15,16 @@ namespace FUMiniHotelManagement.BLL.Services
         {
             return _repo.GetAll();
         }
+
+        public decimal GetTotalPrice()
+        {
+            return _repo.GetTotalPrice();
+        }
+
+        public int GetTotalBookingCount()
+        {
+            return _repo.GetTotalRoomsBooked();
+        }
+
     }
 }

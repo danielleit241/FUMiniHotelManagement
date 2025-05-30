@@ -50,5 +50,17 @@ namespace FUMiniHotelManagement.DAL.Repositories
             _context.BookingReservations.Update(x);
             _context.SaveChanges();
         }
+
+        public decimal GetTotalPrice()
+        {
+            _context = new();
+            return _context.BookingReservations.Sum(b => b.TotalPrice ?? 0);
+        }
+
+        public int GetTotalRoomsBooked()
+        {
+            _context = new();
+            return _context.BookingDetails.Count();
+        }
     }
 }
