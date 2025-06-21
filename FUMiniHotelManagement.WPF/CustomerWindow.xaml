@@ -8,8 +8,15 @@
         Title="Manage Customers"
         Height="685"
         Width="1265"
-        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Style="{StaticResource WindowStyle}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource HotelBackgroundBrush}">
     <Grid Loaded="Grid_Loaded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="82*"/>
+            <ColumnDefinition Width="171*"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Header -->
         <Label Content="Manage Customers"
@@ -22,7 +29,7 @@
                Height="80"
                Margin="31,20,0,0"
                VerticalAlignment="Top"
-               Width="569"/>
+               Width="569" Grid.ColumnSpan="2"/>
 
         <Label x:Name="HelloMsgLabel"
                Content="Hello, Administrator"
@@ -32,9 +39,9 @@
                HorizontalContentAlignment="Right"
                HorizontalAlignment="Left"
                Height="50"
-               Margin="929,6,0,0"
+               Margin="519,6,0,0"
                VerticalAlignment="Top"
-               Width="315"/>
+               Width="315" Grid.Column="1"/>
 
         <!-- Search Section Background -->
         <Rectangle HorizontalAlignment="Left"
@@ -44,17 +51,17 @@
                    StrokeThickness="2"
                    VerticalAlignment="Top"
                    Width="1171"
-                   Fill="{StaticResource SecondaryBrush}"
+                   Fill="{StaticResource HotelGrayBrush}"
                    RadiusX="10"
-                   RadiusY="10" />
+                   RadiusY="10" Grid.ColumnSpan="2" />
 
         <!-- Search Button -->
         <Button x:Name="SearchButton"
                 Content="Search Customer"
                 Style="{StaticResource ButtonStyle}"
-                HorizontalAlignment="Left"
+                HorizontalAlignment="Center"
                 Height="50"
-                Margin="75,162,0,0"
+                Margin="0,162,0,0"
                 VerticalAlignment="Top"
                 Width="262"
                 TabIndex="2"
@@ -67,34 +74,34 @@
                Height="45"
                Margin="388,169,0,0"
                VerticalAlignment="Top"
-               Width="152"/>
+               Width="100" Grid.ColumnSpan="2"/>
         <TextBox x:Name="FullNameTextBox"
-                 Style="{StaticResource TextBoxStyle}"
+                 Style="{StaticResource RoundedTextBox}"
                  HorizontalAlignment="Left"
                  Height="45"
-                 Margin="495,167,0,0"
+                 Margin="85,167,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="303"
-                 TabIndex="0"/>
+                 TabIndex="0" Grid.Column="1"/>
 
         <!-- Telephone Search -->
         <Label Content="Telephone"
                Style="{StaticResource LabelStyle}"
                HorizontalAlignment="Left"
                Height="45"
-               Margin="890,169,0,0"
+               Margin="420,169,0,0"
                VerticalAlignment="Top"
-               Width="108"/>
+               Width="90" Grid.Column="1"/>
         <TextBox x:Name="TelephoneQuantityTextBox"
-                 Style="{StaticResource TextBoxStyle}"
+                 Style="{StaticResource RoundedTextBox}"
                  HorizontalAlignment="Left"
                  Height="45"
-                 Margin="1003,165,0,0"
+                 Margin="510,165,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="185"
-                 TabIndex="1"/>
+                 TabIndex="1" Grid.Column="1"/>
 
         <!-- CRUD Buttons -->
         <Button x:Name="CreateButton"
@@ -102,41 +109,41 @@
                 Style="{StaticResource ButtonStyle}"
                 HorizontalAlignment="Left"
                 Height="50"
-                Margin="1003,294,0,0"
+                Margin="593,294,0,0"
                 VerticalAlignment="Top"
                 Width="185"
                 TabIndex="3"
-                Click="CreateButton_Click"/>
+                Click="CreateButton_Click" Grid.Column="1"/>
         <Button x:Name="UpdateButton"
                 Content="Update Customer"
                 Style="{StaticResource SuccessButtonStyle}"
                 HorizontalAlignment="Left"
                 Height="50"
-                Margin="1003,367,0,0"
+                Margin="593,367,0,0"
                 VerticalAlignment="Top"
                 Width="185"
                 TabIndex="4"
-                Click="UpdateButton_Click"/>
+                Click="UpdateButton_Click" Grid.Column="1"/>
         <Button x:Name="DeleteButton"
                 Content="Delete Customer"
                 Style="{StaticResource ErrorButtonStyle}"
                 HorizontalAlignment="Left"
                 Height="50"
-                Margin="1003,444,0,0"
+                Margin="593,444,0,0"
                 VerticalAlignment="Top"
                 Width="185"
                 TabIndex="5"
-                Click="DeleteButton_Click"/>
+                Click="DeleteButton_Click" Grid.Column="1"/>
         <Button x:Name="QuitButton"
                 Content="Quit"
                 Style="{StaticResource WarningButtonStyle}"
                 HorizontalAlignment="Left"
                 Height="50"
-                Margin="1003,540,0,0"
+                Margin="593,540,0,0"
                 VerticalAlignment="Top"
                 Width="185"
                 TabIndex="6"
-                Click="QuitButton_Click"/>
+                Click="QuitButton_Click" Grid.Column="1"/>
 
         <!-- DataGrid -->
         <DataGrid x:Name="CustomersDataGrid"
@@ -147,9 +154,13 @@
                   Width="930"
                   AutoGenerateColumns="False"
                   TabIndex="7"
-                  Background="{StaticResource SecondaryBrush}"
+                  Background="{StaticResource HotelGrayBrush}"
                   Foreground="{StaticResource TextPrimaryBrush}"
-                  BorderBrush="{StaticResource AccentBrush}">
+                  BorderBrush="{StaticResource AccentBrush}"
+                  RowHeaderWidth="0"
+                  HeadersVisibility="Column"
+                  CanUserAddRows="False"
+                  AlternatingRowBackground="{StaticResource HotelBackgroundBrush}" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="40" Binding="{Binding CustomerId}" />
                 <DataGridTextColumn Header="Full Name" Width="150" Binding="{Binding CustomerFullName}" />

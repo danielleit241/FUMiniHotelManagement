@@ -14,6 +14,7 @@ namespace FUMiniHotelManagement.WPF
         public RoomWindow()
         {
             InitializeComponent();
+            FillGridData(_service.GetRooms());
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

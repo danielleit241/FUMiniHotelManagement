@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FUMiniHotelManagement.DAL.Entities;
+﻿using FUMiniHotelManagement.DAL.Entities;
 using FUMiniHotelManagement.DAL.Repositories;
 using Microsoft.IdentityModel.Tokens;
 
@@ -53,10 +48,10 @@ namespace FUMiniHotelManagement.BLL.Services
 
             if (!fullName.IsNullOrEmpty())
             {
-                customers = customers.Where(x => x.CustomerFullName.ToLower().Contains(fullName.ToLower())).ToList();
+                customers = customers.Where(x => x.CustomerFullName!.ToLower().Contains(fullName.ToLower())).ToList();
             }
 
-            if(!telephone.IsNullOrEmpty())
+            if (!telephone.IsNullOrEmpty())
             {
                 customers = customers.Where(x => x.Telephone != null && x.Telephone.Contains(telephone)).ToList();
             }
@@ -71,19 +66,19 @@ namespace FUMiniHotelManagement.BLL.Services
                 return customers;
             }
 
-            if(!fullName.IsNullOrEmpty() && !telephone.IsNullOrEmpty())
+            if (!fullName.IsNullOrEmpty() && !telephone.IsNullOrEmpty())
             {
-                customers = customers.Where(x => (!fullName.IsNullOrEmpty() && x.CustomerFullName.ToLower().Contains(fullName.ToLower()) ||
-                    (!telephone.IsNullOrEmpty() && x.Telephone.ToLower().Contains(telephone.ToLower()))
+                customers = customers.Where(x => (!fullName.IsNullOrEmpty() && x.CustomerFullName!.ToLower().Contains(fullName.ToLower()) ||
+                    (!telephone.IsNullOrEmpty() && x.Telephone!.ToLower().Contains(telephone.ToLower()))
                 )).ToList();
-            } 
+            }
             else if (!fullName.IsNullOrEmpty())
             {
-                customers = customers.Where(x => (!fullName.IsNullOrEmpty() && x.CustomerFullName.ToLower().Contains(fullName.ToLower()))).ToList();
+                customers = customers.Where(x => (!fullName.IsNullOrEmpty() && x.CustomerFullName!.ToLower().Contains(fullName.ToLower()))).ToList();
             }
             else if (!telephone.IsNullOrEmpty())
             {
-                customers = customers.Where(x => (!telephone.IsNullOrEmpty() && x.Telephone.ToLower().Contains(telephone.ToLower())
+                customers = customers.Where(x => (!telephone.IsNullOrEmpty() && x.Telephone!.ToLower().Contains(telephone.ToLower())
                 )).ToList();
             }
 

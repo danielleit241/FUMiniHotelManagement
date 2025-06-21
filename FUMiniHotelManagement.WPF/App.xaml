@@ -1,102 +1,198 @@
-﻿<Application x:Class="FUMiniHotelManagement.WPF.App"  
-           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  
-           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
-           xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"  
+﻿<Application x:Class="FUMiniHotelManagement.WPF.App"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
            StartupUri="Login.xaml">
     <Application.Resources>
-        <!-- Modern Color Palette -->
-        <Color x:Key="PrimaryColor">#2D2D2D</Color>
-        <Color x:Key="AccentColor">#00BFAE</Color>
-        <Color x:Key="SecondaryColor">#F5F5F5</Color>
-        <Color x:Key="ErrorColor">#FF5252</Color>
-        <Color x:Key="SuccessColor">#4CAF50</Color>
-        <Color x:Key="WarningColor">#FFC107</Color>
-        <Color x:Key="TextPrimary">#212121</Color>
-        <Color x:Key="TextSecondary">#757575</Color>
+        <!-- Luxury Hotel Color Palette -->
+        <Color x:Key="HotelNavy">#23395D</Color>
+        <Color x:Key="HotelGold">#FFD700</Color>
+        <Color x:Key="HotelBackground">#FAFAFA</Color>
+        <Color x:Key="HotelGray">#E5E5E5</Color>
+        <Color x:Key="HotelAccent">#4ECDC4</Color>
+        <Color x:Key="HotelTextPrimary">#222222</Color>
+        <Color x:Key="HotelTextSecondary">#6C757D</Color>
+        <Color x:Key="HotelError">#E74C3C</Color>
+        <Color x:Key="HotelSuccess">#27AE60</Color>
+        <Color x:Key="HotelWarning">#F5B041</Color>
 
-        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}" />
-        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
-        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}" />
-        <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource ErrorColor}" />
-        <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}" />
-        <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}" />
-        <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimary}" />
-        <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondary}" />
+        <SolidColorBrush x:Key="SecondaryBrush" Color="#F8FAFB"/>
+        <SolidColorBrush x:Key="TextPrimaryBrush" Color="#222222"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#0078D7"/>
+        <SolidColorBrush x:Key="HotelNavyBrush" Color="{StaticResource HotelNavy}" />
+        <SolidColorBrush x:Key="HotelGoldBrush" Color="{StaticResource HotelGold}" />
+        <SolidColorBrush x:Key="HotelBackgroundBrush" Color="{StaticResource HotelBackground}" />
+        <SolidColorBrush x:Key="HotelGrayBrush" Color="{StaticResource HotelGray}" />
+        <SolidColorBrush x:Key="HotelAccentBrush" Color="{StaticResource HotelAccent}" />
+        <SolidColorBrush x:Key="HotelTextPrimaryBrush" Color="{StaticResource HotelTextPrimary}" />
+        <SolidColorBrush x:Key="HotelTextSecondaryBrush" Color="{StaticResource HotelTextSecondary}" />
+        <SolidColorBrush x:Key="HotelErrorBrush" Color="{StaticResource HotelError}" />
+        <SolidColorBrush x:Key="HotelSuccessBrush" Color="{StaticResource HotelSuccess}" />
+        <SolidColorBrush x:Key="HotelWarningBrush" Color="{StaticResource HotelWarning}" />
 
-        <!-- Modern Styles -->
+        <!-- Window Style -->
         <Style x:Key="WindowStyle" TargetType="Window">
-            <Setter Property="Background" Value="{StaticResource SecondaryBrush}" />
+            <Setter Property="Background" Value="{StaticResource HotelBackgroundBrush}" />
+            <Setter Property="FontFamily" Value="Segoe UI"/>
         </Style>
+
+        <!-- Label Style -->
         <Style x:Key="LabelStyle" TargetType="Label">
-            <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
         </Style>
+
+        <!-- TextBox Style -->
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
-            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
-            <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Padding" Value="8,4" />
+            <Setter Property="Background" Value="{StaticResource HotelGrayBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource HotelTextPrimaryBrush}" />
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="BorderBrush" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
-            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
-            <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Padding" Value="10,5" />
-            <Setter Property="Margin" Value="4" />
-            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Height" Value="36"/>
             <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="#22000000" BlurRadius="8" ShadowDepth="2"/>
+                    <DropShadowEffect Color="#10000000" BlurRadius="3" ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- PasswordBox Style -->
+        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Background" Value="{StaticResource HotelGrayBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource HotelTextPrimaryBrush}" />
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="BorderBrush" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#10000000" BlurRadius="3" ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Button Style -->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource HotelGoldBrush}" />
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="BorderBrush" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="8,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#22000000" BlurRadius="7" ShadowDepth="1"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"   
-                              CornerRadius="6"   
-                              BorderBrush="{TemplateBinding BorderBrush}"   
-                              BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Button Variants -->
+        <Style x:Key="GoldButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource HotelGoldBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource HotelGoldBrush}" />
+        </Style>
+        <Style x:Key="AccentButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource HotelAccentBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource HotelAccentBrush}" />
+        </Style>
         <Style x:Key="ErrorButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource ErrorBrush}" />
-            <Setter Property="BorderBrush" Value="{StaticResource ErrorBrush}" />
+            <Setter Property="Background" Value="{StaticResource HotelErrorBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource HotelErrorBrush}" />
         </Style>
         <Style x:Key="SuccessButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource SuccessBrush}" />
-            <Setter Property="BorderBrush" Value="{StaticResource SuccessBrush}" />
+            <Setter Property="Background" Value="{StaticResource HotelSuccessBrush}" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource HotelSuccessBrush}" />
         </Style>
-        <Style x:Key="WarningButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource WarningBrush}" />
-            <Setter Property="BorderBrush" Value="{StaticResource WarningBrush}" />
-        </Style>
+
+        <!-- ComboBox Style -->
         <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Margin" Value="0,4,0,4"/>
+            <Setter Property="Background" Value="{StaticResource HotelGrayBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource HotelTextPrimaryBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource HotelNavyBrush}" />
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#10000000" BlurRadius="3" ShadowDepth="1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundedTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="Background" Value="{StaticResource HotelGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="10,4"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Padding" Value="5"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="WarningButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Background" Value="#FFF7D060"/>
+            <Setter Property="Foreground" Value="#213555"/>
+            <Setter Property="BorderBrush" Value="#FFCBA600"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="8">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

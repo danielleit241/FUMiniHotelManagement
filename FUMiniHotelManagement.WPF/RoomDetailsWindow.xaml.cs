@@ -25,11 +25,11 @@ namespace FUMiniHotelManagement.WPF
             if (EditedRoom != null)
             {
                 FillElements(EditedRoom);
-                DetailWindowModeLabel.Content = "Update Room Information";
+                DetailWindowModeLabel.Text = "Update Room Information";
             }
             else
             {
-                DetailWindowModeLabel.Content = "Create Room Information";
+                DetailWindowModeLabel.Text = "Create Room Information";
             }
             RoomIdTextBox.IsEnabled = false;
         }

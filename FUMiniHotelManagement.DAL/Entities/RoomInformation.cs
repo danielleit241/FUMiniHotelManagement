@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace FUMiniHotelManagement.DAL.Entities;
+﻿namespace FUMiniHotelManagement.DAL.Entities;
 
 public partial class RoomInformation
 {

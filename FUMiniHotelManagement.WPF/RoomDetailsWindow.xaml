@@ -1,182 +1,167 @@
 ﻿<Window x:Class="FUMiniHotelManagement.WPF.RoomDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Room Detail" Height="800" Width="1150"
+        Title="Room Detail" Height="750" Width="900"
         Style="{StaticResource WindowStyle}"
         Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <!-- Style RoundedTextBox nếu chưa có -->
+        <Style x:Key="RoundedTextBox" TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="Background" Value="{StaticResource HotelGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="10,4"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- Style RoundedComboBox nếu chưa có -->
+        <Style x:Key="RoundedComboBox" TargetType="ComboBox" BasedOn="{StaticResource ComboBoxStyle}">
+            <Setter Property="Background" Value="{StaticResource HotelGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="6,2"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <Grid>
+                                <ToggleButton Name="ToggleButton"
+                                              Grid.Column="2"
+                                              Focusable="false"
+                                              IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ClickMode="Press"
+                                              Background="Transparent"
+                                              BorderBrush="{x:Null}">
+                                    <Path x:Name="Arrow"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Data="M 0 0 L 4 4 L 8 0 Z"
+                                          Fill="#888"/>
+                                </ToggleButton>
+                                <ContentPresenter Name="ContentSite"
+                                                  IsHitTestVisible="False"
+                                                  Content="{TemplateBinding SelectionBoxItem}"
+                                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                  Margin="6,2,30,2"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Left"/>
+                                <TextBox x:Name="PART_EditableTextBox"
+                                         Style="{x:Null}"
+                                         Template="{x:Null}"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         Background="Transparent"
+                                         Foreground="{TemplateBinding Foreground}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         Visibility="Hidden"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="620"/>
+        </Grid.RowDefinitions>
 
-    <Grid>
         <!-- Title -->
-        <Label x:Name="DetailWindowModeLabel"
-               Content="Create | Update Room Information"
-               Style="{StaticResource LabelStyle}"
-               FontWeight="Bold"
-               FontSize="40"
-               FontStyle="Italic"
-               Foreground="{StaticResource AccentBrush}"
-               HorizontalAlignment="Left"
-               Height="80"
-               Margin="38,20,0,0"
-               VerticalAlignment="Top"
-               Width="814"/>
+        <TextBlock x:Name="DetailWindowModeLabel" Text="Create | Update Room Information"
+                   FontSize="36"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   Foreground="{StaticResource AccentBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="0,40,0,24"/>
 
-        <!-- Main form area background -->
-        <Rectangle HorizontalAlignment="Left"
-                   Height="585"
-                   Margin="38,128,0,0"
-                   Stroke="{StaticResource AccentBrush}"
-                   StrokeThickness="2"
-                   VerticalAlignment="Top"
-                   Width="875"
-                   Fill="{StaticResource SecondaryBrush}"
-                   Opacity="0.96"
-                   RadiusX="10"
-                   RadiusY="10" />
+        <!-- Main form area -->
+        <Border Grid.Row="1"
+                Background="{StaticResource SecondaryBrush}"
+                BorderBrush="{StaticResource AccentBrush}"
+                BorderThickness="2"
+                CornerRadius="18"
+                Margin="48"
+                Padding="36">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="80"/>
+                    <!-- Buttons Row -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <!-- Form labels and controls -->
-        <Label Content="Room ID"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,155,0,0"
-               VerticalAlignment="Top"
-               Width="107"/>
-        <TextBox x:Name="RoomIdTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="45"
-                 Margin="223,153,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="275"
-                 TabIndex="0"/>
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Room ID:" VerticalAlignment="Center" Margin="0,0,10,8"/>
+                <TextBox x:Name="RoomIdTextBox" Grid.Row="0" Grid.Column="1" Style="{StaticResource RoundedTextBox}" Height="38" Margin="0,0,0,8" TabIndex="0"/>
 
-        <Label Content="Room Number"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,218,0,0"
-               VerticalAlignment="Top"
-               Width="147"/>
-        <TextBox x:Name="RoomNumberTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="45"
-                 Margin="223,216,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="635"
-                 TabIndex="1"/>
+                <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Room Number:" VerticalAlignment="Center" Margin="0,0,10,8"/>
+                <TextBox x:Name="RoomNumberTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource RoundedTextBox}" Height="38" Margin="0,0,0,8" TabIndex="1"/>
 
-        <Label Content="Status"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,284,0,0"
-               VerticalAlignment="Top"
-               Width="107"/>
-        <TextBox x:Name="RoomStatusTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="45"
-                 Margin="223,283,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="227"
-                 TabIndex="2"/>
+                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Status:" VerticalAlignment="Center" Margin="0,0,10,8"/>
+                <TextBox x:Name="RoomStatusTextBox" Grid.Row="2" Grid.Column="1" Style="{StaticResource RoundedTextBox}" Height="38" Margin="0,0,0,8" TabIndex="2"/>
 
-        <Label Content="Max Capacity"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,351,0,0"
-               VerticalAlignment="Top"
-               Width="128"/>
-        <TextBox x:Name="RoomMaxCapacityTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="45"
-                 Margin="223,351,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="635"
-                 TabIndex="3"/>
+                <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Max Capacity:" VerticalAlignment="Center" Margin="0,0,10,8"/>
+                <TextBox x:Name="RoomMaxCapacityTextBox" Grid.Row="3" Grid.Column="1" Style="{StaticResource RoundedTextBox}" Height="38" Margin="0,0,0,8" TabIndex="3"/>
 
-        <Label Content="Details"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,422,0,0"
-               VerticalAlignment="Top"
-               Width="157"/>
-        <TextBox x:Name="RoomDetailDescriptionTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="105"
-                 Margin="223,421,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="637"
-                 TabIndex="4"
-                 AcceptsReturn="True"
-                 VerticalScrollBarVisibility="Visible"
-                 VerticalContentAlignment="Top"/>
+                <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Details:" VerticalAlignment="Top" Margin="0,0,10,8"/>
+                <TextBox x:Name="RoomDetailDescriptionTextBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource RoundedTextBox}" Height="90" Margin="0,0,0,8" TabIndex="4" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" VerticalContentAlignment="Top"/>
 
-        <Label Content="Price Per Day"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,550,0,0"
-               VerticalAlignment="Top"
-               Width="140"/>
-        <TextBox x:Name="RoomPricePerDayTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="45"
-                 Margin="223,547,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="227"
-                 TabIndex="5"/>
+                <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Price Per Day:" VerticalAlignment="Center" Margin="0,0,10,8"/>
+                <TextBox x:Name="RoomPricePerDayTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource RoundedTextBox}" Height="38" Margin="0,0,0,8" TabIndex="5"/>
 
-        <Label Content="Type ID"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="58,614,0,0"
-               VerticalAlignment="Top"
-               Width="147"/>
-        <ComboBox x:Name="RoomTypeIdComboBox"
-                  HorizontalAlignment="Left"
-                  Height="44"
-                  Margin="223,614,0,0"
-                  VerticalAlignment="Top"
-                  Width="290"
-                  FontWeight="Bold"
-                  FontSize="18"
-                  Style="{StaticResource ComboBoxStyle}"
-                  TabIndex="8"/>
+                <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStyle}" Content="Type ID:" VerticalAlignment="Center" Margin="0,0,10,8"/>
+                <ComboBox x:Name="RoomTypeIdComboBox" Grid.Row="6" Grid.Column="1"
+                          Style="{StaticResource RoundedComboBox}"
+                          Height="38"
+                          FontWeight="Bold"
+                          FontSize="16"
+                          TabIndex="6"/>
 
-        <!-- Buttons -->
-        <Button x:Name="SaveButton"
-                Content="Save Room"
-                Style="{StaticResource ButtonStyle}"
-                HorizontalAlignment="Left"
-                Height="50"
-                Margin="945,128,0,0"
-                VerticalAlignment="Top"
-                Width="165"
-                TabIndex="9"
-                Click="SaveButton_Click"/>
-        <Button x:Name="CloseButton"
-                Content="Close"
-                Style="{StaticResource ErrorButtonStyle}"
-                HorizontalAlignment="Left"
-                Height="50"
-                Margin="945,208,0,0"
-                VerticalAlignment="Top"
-                Width="165"
-                TabIndex="10"
-                Click="CloseButton_Click"/>
+                <!-- Buttons: Căn giữa hàng cuối cùng, tách biệt và rõ ràng -->
+                <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,24,0,0">
+                    <Button x:Name="SaveButton"
+                            Content="Save Room"
+                            Style="{StaticResource ButtonStyle}"
+                            Width="180"
+                            Height="44"
+                            Margin="0,0,24,0"
+                            TabIndex="7"
+                            Click="SaveButton_Click"/>
+                    <Button x:Name="CloseButton"
+                            Content="Close"
+                            Style="{StaticResource ErrorButtonStyle}"
+                            Width="120"
+                            Height="44"
+                            TabIndex="8"
+                            Click="CloseButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

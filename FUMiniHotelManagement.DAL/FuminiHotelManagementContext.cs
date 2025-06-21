@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using FUMiniHotelManagement.DAL.Entities;
+﻿using FUMiniHotelManagement.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

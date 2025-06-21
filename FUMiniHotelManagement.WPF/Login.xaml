@@ -7,91 +7,75 @@
         mc:Ignorable="d"
         Title="Login to the system..." Height="538" Width="855"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-        Style="{StaticResource WindowStyle}">
+        Style="{StaticResource WindowStyle}"
+        Background="{StaticResource HotelBackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="63*"/>
-            <ColumnDefinition Width="65*"/>
-            <ColumnDefinition Width="722*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Rectangle: dùng màu Accent cho hài hòa giao diện -->
-        <Rectangle HorizontalAlignment="Left" Height="354" Stroke="{StaticResource AccentBrush}" VerticalAlignment="Top" Width="574"
-                   Fill="{StaticResource AccentBrush}" RadiusX="20" RadiusY="20" Margin="23,70,0,0" Grid.Column="2" Opacity="0.10"/>
+        <!-- Sidebar với Logo hoặc hình ảnh (tuỳ ý, có thể bỏ qua) -->
+        <Border Grid.Column="0" Background="{StaticResource HotelNavyBrush}" CornerRadius="0,30,30,0" Margin="0">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="FU Mini Hotel" Foreground="{StaticResource HotelGoldBrush}" FontSize="34" FontWeight="Bold" Margin="0,0,0,8"/>
+                <TextBlock Text="Management" Foreground="White" FontSize="22" FontWeight="SemiBold"/>
+            </StackPanel>
+        </Border>
 
-        <Label Content="Log in"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="65"
-               Margin="195,77,0,0"
-               VerticalAlignment="Top"
-               Width="230"
-               FontWeight="ExtraBold"
-               FontSize="40"
-               HorizontalContentAlignment="Center"
-               Grid.Column="2"/>
+        <!-- Main login form -->
+        <Grid Grid.Column="1">
+            <!-- Accent rectangle background -->
+            <Rectangle Fill="{StaticResource AccentBrush}" Opacity="0.12" RadiusX="28" RadiusY="28"
+                       Height="420" Width="410" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <Label Content="Email"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="68,182,0,0"
-               VerticalAlignment="Top"
-               Width="107"
-               Grid.Column="2"/>
-
-        <TextBox x:Name="EmailAddressTextBox"
-                 Style="{StaticResource TextBoxStyle}"
-                 HorizontalAlignment="Left"
-                 Height="45"
-                 Margin="180,179,0,0"
-                 TextWrapping="Wrap"
-                 VerticalAlignment="Top"
-                 Width="374"
-                 TabIndex="0"
-                 Grid.Column="2"/>
-
-        <Label Content="Password"
-               Style="{StaticResource LabelStyle}"
-               HorizontalAlignment="Left"
-               Height="45"
-               Margin="68,251,0,0"
-               VerticalAlignment="Top"
-               Width="107"
-               Grid.Column="2"/>
-
-        <PasswordBox x:Name="PasswordPasswordBox"
-                     Style="{StaticResource PasswordBoxStyle}"
-                     HorizontalAlignment="Left"
-                     Height="45"
-                     VerticalAlignment="Top"
-                     Width="374"
-                     TabIndex="1"
-                     Grid.Column="2"
-                     Margin="180,249,0,0"/>
-
-        <Button x:Name="LoginButton"
-                Content="Login"
-                Style="{StaticResource ButtonStyle}"
-                HorizontalAlignment="Left"
-                Height="55"
-                Margin="68,339,0,0"
-                VerticalAlignment="Top"
-                Width="230"
-                TabIndex="2"
-                Grid.Column="2"
-                Click="LoginButton_Click"/>
-
-        <Button x:Name="QuitButton"
-                Content="Quit"
-                Style="{StaticResource ErrorButtonStyle}"
-                HorizontalAlignment="Left"
-                Height="55"
-                Margin="324,339,0,0"
-                VerticalAlignment="Top"
-                Width="230"
-                TabIndex="3"
-                Grid.Column="2"
-                Click="QuitButton_Click"/>
+            <!-- Login form content -->
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="400" Margin="0">
+                <Label Content="Log in"
+                       Style="{StaticResource LabelStyle}"
+                       FontWeight="ExtraBold"
+                       FontSize="40"
+                       Foreground="{StaticResource HotelNavyBrush}"
+                       HorizontalContentAlignment="Center"
+                       Margin="0,0,0,30"/>
+                <Label Content="Email"
+                       Style="{StaticResource LabelStyle}"
+                       Foreground="{StaticResource HotelNavyBrush}"
+                       Margin="0,0,0,4"/>
+                <TextBox x:Name="EmailAddressTextBox"
+                         Style="{StaticResource TextBoxStyle}"
+                         Height="45"
+                         Margin="0,0,0,18"
+                         BorderBrush="AliceBlue"
+                         TabIndex="0"/>
+                <Label Content="Password"
+                       Style="{StaticResource LabelStyle}"
+                       Foreground="{StaticResource HotelNavyBrush}"
+                       Margin="0,0,0,4"/>
+                <PasswordBox x:Name="PasswordPasswordBox"
+                             Style="{StaticResource PasswordBoxStyle}"
+                             Height="45"
+                             Margin="0,0,0,30"
+                             BorderBrush="AliceBlue"
+                             TabIndex="1"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="LoginButton"
+                            Content="Login"
+                            Style="{StaticResource GoldButtonStyle}"
+                            Height="50"
+                            Width="140"
+                            Margin="0,0,16,0"
+                            TabIndex="2"
+                            Click="LoginButton_Click"/>
+                    <Button x:Name="QuitButton"
+                            Content="Quit"
+                            Style="{StaticResource ErrorButtonStyle}"
+                            Height="50"
+                            Width="140"
+                            TabIndex="3"
+                            Click="QuitButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

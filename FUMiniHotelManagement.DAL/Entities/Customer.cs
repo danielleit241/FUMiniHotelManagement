@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore; // Add this at the top if not present
-
-
-namespace FUMiniHotelManagement.DAL.Entities;
+﻿namespace FUMiniHotelManagement.DAL.Entities;
 
 public partial class Customer
 {
@@ -22,6 +17,6 @@ public partial class Customer
     public string? Password { get; set; }
 
     public virtual ICollection<BookingReservation> BookingReservations { get; set; } = new List<BookingReservation>();
-    
-    
-    }
+
+
+}

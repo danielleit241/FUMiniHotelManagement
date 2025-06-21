@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FUMiniHotelManagement.WPF"
         mc:Ignorable="d"
-        Title="Manage Room Informations" Height="685" Width="1265" Loaded="Window_Loaded"
-        Style="{StaticResource WindowStyle}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Manage Rooms"
+        Height="685"
+        Width="1265"
+        Style="{StaticResource WindowStyle}"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource HotelBackgroundBrush}">
     <Grid>
+
         <!-- Header -->
-        <Label Content="Manage Room Informations"
+        <Label Content="Manage Rooms"
                Style="{StaticResource LabelStyle}"
                FontWeight="Bold"
                FontSize="50"
@@ -19,7 +25,8 @@
                Height="80"
                Margin="31,20,0,0"
                VerticalAlignment="Top"
-               Width="722"/>
+               Width="469"/>
+
         <Label x:Name="HelloMsgLabel"
                Content="Hello, Administrator"
                Style="{StaticResource LabelStyle}"
@@ -40,13 +47,13 @@
                    StrokeThickness="2"
                    VerticalAlignment="Top"
                    Width="1171"
-                   Fill="{StaticResource SecondaryBrush}"
+                   Fill="{StaticResource HotelGrayBrush}"
                    RadiusX="10"
                    RadiusY="10" />
 
         <!-- Search Button -->
         <Button x:Name="SearchButton"
-                Content="Search Room Information"
+                Content="Search Room"
                 Style="{StaticResource ButtonStyle}"
                 HorizontalAlignment="Left"
                 Height="50"
@@ -56,37 +63,37 @@
                 TabIndex="2"
                 Click="SearchButton_Click"/>
 
-        <!-- Room Description -->
-        <Label Content="Room Description"
+        <!-- Room Description Search -->
+        <Label Content="Room Desc."
                Style="{StaticResource LabelStyle}"
                HorizontalAlignment="Left"
                Height="45"
                Margin="388,169,0,0"
                VerticalAlignment="Top"
-               Width="163"/>
+               Width="100"/>
         <TextBox x:Name="RoomDescriptionTextBox"
-                 Style="{StaticResource TextBoxStyle}"
+                 Style="{StaticResource RoundedTextBox}"
                  HorizontalAlignment="Left"
                  Height="45"
-                 Margin="556,165,0,0"
+                 Margin="495,167,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="303"
                  TabIndex="0"/>
 
-        <!-- Room Price -->
-        <Label Content="Room Price"
+        <!-- Room Price Search -->
+        <Label Content="Price"
                Style="{StaticResource LabelStyle}"
                HorizontalAlignment="Left"
                Height="45"
-               Margin="890,169,0,0"
+               Margin="830,169,0,0"
                VerticalAlignment="Top"
-               Width="108"/>
+               Width="90"/>
         <TextBox x:Name="RoomPriceTextBox"
-                 Style="{StaticResource TextBoxStyle}"
+                 Style="{StaticResource RoundedTextBox}"
                  HorizontalAlignment="Left"
                  Height="45"
-                 Margin="1003,165,0,0"
+                 Margin="920,165,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                  Width="185"
@@ -143,18 +150,22 @@
                   Width="930"
                   AutoGenerateColumns="False"
                   TabIndex="7"
-                  Background="{StaticResource SecondaryBrush}"
+                  Background="{StaticResource HotelGrayBrush}"
                   Foreground="{StaticResource TextPrimaryBrush}"
-                  BorderBrush="{StaticResource AccentBrush}">
+                  BorderBrush="{StaticResource AccentBrush}"
+                  RowHeaderWidth="0"
+                  HeadersVisibility="Column"
+                  CanUserAddRows="False"
+                  AlternatingRowBackground="{StaticResource HotelBackgroundBrush}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="40" Binding="{Binding RoomId}" />
-                <DataGridTextColumn Header="Room Number" Width="60" Binding="{Binding RoomNumber}" />
+                <DataGridTextColumn Header="Room Number" Width="70" Binding="{Binding RoomNumber}" />
                 <DataGridTextColumn Header="Detail Description" Width="150" Binding="{Binding RoomDetailDescription}" />
-                <DataGridTextColumn Header="Max Capacity" Width="60" Binding="{Binding RoomMaxCapacity}" />
-                <DataGridTextColumn Header="Room Status" Width="60" Binding="{Binding RoomStatus}" />
-                <DataGridTextColumn Header="Price Per Day" Width="100" Binding="{Binding RoomPricePerDay}" />
-                <DataGridTextColumn Header="Room Type Id" Width="60" Binding="{Binding RoomTypeId}" />
-                <DataGridTextColumn Header="Type Name" Width="30" Binding="{Binding RoomType.RoomTypeName}" />
+                <DataGridTextColumn Header="Max Cap." Width="70" Binding="{Binding RoomMaxCapacity}" />
+                <DataGridTextColumn Header="Status" Width="70" Binding="{Binding RoomStatus}" />
+                <DataGridTextColumn Header="Price/Day" Width="100" Binding="{Binding RoomPricePerDay}" />
+                <DataGridTextColumn Header="Type Id" Width="60" Binding="{Binding RoomTypeId}" />
+                <DataGridTextColumn Header="Type Name" Width="100" Binding="{Binding RoomType.RoomTypeName}" />
                 <DataGridTextColumn Header="BookingDetails" Width="100" Binding="{Binding BookingDetails}" />
             </DataGrid.Columns>
         </DataGrid>

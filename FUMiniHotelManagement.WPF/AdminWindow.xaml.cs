@@ -1,17 +1,5 @@
-﻿using FUMiniHotelManagement.BLL.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using FUMiniHotelManagement.BLL.Services;
 
 namespace FUMiniHotelManagement.WPF
 {
@@ -47,8 +35,8 @@ namespace FUMiniHotelManagement.WPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             FillBokingHistory();
-            TotalMoneyLable.Content = "Total money: " + _service.GetTotalPrice();
-            TotalRoomBookedLable.Content = "Total Rooms Booked: " + _service.GetTotalBookingCount();
+            TotalMoneyLable.Text = "$" + Math.Round((double)_service.GetTotalPrice() * 1000) / 1000;
+            TotalRoomBookedLable.Text = "" + _service.GetTotalBookingCount();
         }
 
         private void FillBokingHistory()

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FUMiniHotelManagement.DAL.Entities;
+﻿using FUMiniHotelManagement.DAL.Entities;
 
 
 namespace FUMiniHotelManagement.DAL.Repositories
@@ -52,8 +47,8 @@ namespace FUMiniHotelManagement.DAL.Repositories
             _context.SaveChanges();
         }
 
-       
 
-        
-}
+
+
+    }
 }

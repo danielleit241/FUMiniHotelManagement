@@ -45,12 +45,12 @@ namespace FUMiniHotelManagement.DAL.Repositories
 
             if (!string.IsNullOrEmpty(des) && price.HasValue)
             {
-                return _context.RoomInformations.Where(r => r.RoomDetailDescription.Contains(des) || r.RoomPricePerDay == price)
+                return _context.RoomInformations.Where(r => r.RoomDetailDescription!.Contains(des) || r.RoomPricePerDay == price)
                                                  .Include("RoomType").ToList();
             }
             else if (!string.IsNullOrEmpty(des))
             {
-                return _context.RoomInformations.Where(r => r.RoomDetailDescription.Contains(des))
+                return _context.RoomInformations.Where(r => r.RoomDetailDescription!.Contains(des))
                                                  .Include("RoomType").ToList();
             }
             else
