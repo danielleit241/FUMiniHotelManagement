@@ -30,7 +30,15 @@ namespace FUMiniHotelManagement.WPF
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var res = MessageBox.Show("Are you sure you want to quit?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -70,6 +78,7 @@ namespace FUMiniHotelManagement.WPF
             var selectedRoom = GetSelectedRoom();
             if (selectedRoom == null)
             {
+                MessageBox.Show("Please select a room to delete.", "Select a row", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return;
             }
             if (MessageBox.Show("Are you sure you want to delete this room?", "Delete Room", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)

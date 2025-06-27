@@ -88,7 +88,15 @@ namespace FUMiniHotelManagement.WPF
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var res = MessageBox.Show("Are you sure you want to close this window?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.No)
+            {
+                return;
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

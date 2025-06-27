@@ -90,6 +90,10 @@ namespace FUMiniHotelManagement.WPF
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult answer = MessageBox.Show("Are you sure to close?", "Confirm?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (answer == MessageBoxResult.No)
+                return;
+
             this.Close();
         }
 
