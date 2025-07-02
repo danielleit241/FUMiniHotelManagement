@@ -43,10 +43,15 @@ namespace FUMiniHotelManagement.WPF
             BookingReservationHistoryDataGrids.ItemsSource = bookingService.GetBookingReservationsByCustomerId(UserLogin.CustomerId);
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
+                var comfirmed = MessageBox.Show("Are you sure you want to update your profile?", "Confirm Update", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (comfirmed != MessageBoxResult.Yes)
+                {
+                    return;
+                }
                 if (UserLogin == null)
                 {
                     MessageBox.Show("User is not logged in.");
@@ -68,8 +73,9 @@ namespace FUMiniHotelManagement.WPF
                 }
 
                 userService.UpdateCustomer(UserLogin);
-                MessageBox.Show("Profile updated successfully!");
+                MessageBox.Show("Profile updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 LoadUserProfile();
+
             }
             catch (Exception ex)
             {

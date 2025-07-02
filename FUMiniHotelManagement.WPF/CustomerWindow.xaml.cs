@@ -33,10 +33,6 @@ namespace FUMiniHotelManagement.WPF
             {
                 this.Close();
             }
-            else
-            {
-                return;
-            }
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)

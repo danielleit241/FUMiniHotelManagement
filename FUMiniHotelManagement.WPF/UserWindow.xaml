@@ -121,7 +121,7 @@
                             Width="100"
                             Height="34"
                             Margin="0,0,12,0"
-                            TabIndex="5"/>
+                            TabIndex="5" Click="UpdateButton_Click_1"/>
                     <Button x:Name="QuitButton"
                             Content="Quit"
                             Style="{StaticResource ErrorButtonStyle}"
